@@ -13,16 +13,21 @@
 
 \maketitle
 \newpage
+{
+\hypersetup{linkcolor=black}
+\color{red_nhitec}
 \tableofcontents
+}
+
 \newpage
 
-\section{Introduction}
-    \subsection{Qu'est-ce que Docker?}
+\section[Introduction]{Introduction}
+    \subsection[Qu'est-ce que Docker?]{Qu'est-ce que \docker{}?}
         
-        Docker est un outil open-source créé en 2012 par des français. Cet outil permet de créer, de déployer et de lancer des applications tournant dans un conteneur. Ces conteneurs sont en réalité des environnements dans lesquels les applications tournent.
-        Ils sont créés grâce à des images qui sont des fichiers dockers, ainsi n'importe quel conteneur est assuré de tourner sur n'importe quel machine sans se soucier des configurations locales.\\
-        L'outil est tellement populaire que les mainteneurs de librairies ou de logiciels maintiennent des images docker (dans notre cas on verra que Laravel Sail possède une image docker qui est maintenue à jour régulièrement)
-        Il permet donc de "centraliser" l'environment sur lequel une application est développée. 
+        \docker{} est un outil open-source créé en 2012 par des français. Cet outil permet de créer, de déployer et de lancer des applications tournant dans un conteneur. Ces conteneurs sont en réalité des environnements dans lesquels les applications tournent.
+        Ils sont créés grâce à des images qui sont des fichiers \docker{}, ainsi n'importe quel conteneur est assuré de tourner sur n'importe quel machine sans se soucier des configurations locales.\\
+        L'outil est tellement populaire que les mainteneurs de librairies ou de logiciels maintiennent des images \docker{} (dans notre cas on verra que \laravelsail{} possède une image \docker{} qui est maintenue à jour régulièrement)
+        Il permet donc de ``centraliser'' l'environment sur lequel une application est développée. 
 
         \begin{figure}[h]
             \centering
@@ -31,9 +36,9 @@
             \end{subfigure}%
         \end{figure}
         
-    \subsection{Pourquoi Docker?}
+    \subsection[Pourquoi Docker?]{Pourquoi \docker{}?}
 
-        Un conteneur docker possède de nombreux avantages comparé aux machines virtuels. Premièrement, il utilise les ressources d'un système plus éfficacement qu'une VM tout en gardant ses avantages (isolation et reproductibilité). 
+        Un conteneur \docker{} possède de nombreux avantages comparé aux machines virtuels. Premièrement, il utilise les ressources d'un système plus éfficacement qu'une VM tout en gardant ses avantages (isolation et reproductibilité). 
 
         \begin{wrapfigure}{l}{0.18\textheight}
             \centering
@@ -46,37 +51,37 @@
 
         Enfin, la modifications d'un conteneurs est extrêmement simplifié comparé à une VM où les mises à jour sont souvent complexes et laborieuse.
 
-        Pour résumer, un conteneur docker est flexible, léger, portable.
+        Pour résumer, un conteneur \docker{} est flexible, léger, portable.
 
         
 \newpage
 
-    \subsection{Qu'est-ce que Laravel Sail?}
+    \subsection[Qu'est-ce que Laravel Sail?]{Qu'est-ce que \laravelsail{}?}
         
-        Laravel Sail est une interface de ligne de commande légère pour interagir avec l'environnement de développement Docker par défaut de Laravel. 
+        \laravelsail{} est une interface de ligne de commande légère pour interagir avec l'environnement de développement \docker{} par défaut de \laravel{}. 
         
         \begin{wrapfigure}{l}{0.2\textwidth}
             \centering
             \includegraphics[width=0.2\textwidth]{Images_formation/LaravelLogo.png}
         \end{wrapfigure}
         
-        Sail est un excellent point de départ pour construire une application Laravel en utilisant PHP, MySQL et Redis sans avoir besoin d'une expérience préalable de Docker.
+        Sail est un excellent point de départ pour construire une application \laravel{} en utilisant \php{}, \mysql et Redis sans avoir besoin d'une expérience préalable de \docker{}.
 
-        Au cœur de Sail se trouve le fichier docker-compose.yml et le script sail qui est stocké à la racine de votre projet. Le script sail fournit une CLI (command line interface) avec des méthodes pratiques pour interagir avec les conteneurs Docker définis par le fichier docker-compose.yml.
+        Au cœur de Sail se trouve le fichier docker-compose.yml et le script sail qui est stocké à la racine de votre projet. Le script sail fournit une CLI (command line interface) avec des méthodes pratiques pour interagir avec les conteneurs \docker{} définis par le fichier docker-compose.yml.
 
-        Laravel Sail est pris en charge sur macOS, Linux et Windows (via WSL2).
+        \laravelsail{} est pris en charge sur \macos{}, \linux{} et \windows{} (via WSL2).
 
-        Pour résumer, le scrip sail permet de gérer le projet Laravel à l'intérieur du conteneur du projet. De plus Laravel Sail est complètement compatible avec Docker, ce qui permet des interactions plus simples avec les conteneurs.
+        Pour résumer, le scrip sail permet de gérer le projet \laravel{} à l'intérieur du conteneur du projet. De plus \laravelsail{} est complètement compatible avec \docker{}, ce qui permet des interactions plus simples avec les conteneurs.
 
-\section{Installation de Docker}
-    \subsection{Installation Linux}
+\section[Installation de Docker]{Installation de Docker \includegraphics[height=15pt]{figures-logos/docker.pdf}}
+    \subsection[Installation Linux]{Installation \linux{}}
 
         \begin{figure}[h]
             \centering
             \includegraphics[scale=0.05]{Images_formation/LinuxLogo.png}
         \end{figure}
 
-        L'Installation linux nécéssite de suivre quelques étapes de plus que pour l'Installation MacOS ou Windows.\\
+        L'Installation \linux{} nécéssite de suivre quelques étapes de plus que pour l'Installation \macos{} ou \windows{}.\\
         \begin{itemize}
      
             \item[1.] Mettez à jour l'index des paquets apt et des paquets d'installation pour permettre à apt d'utiliser un dépôt sur HTTPS:
@@ -85,7 +90,7 @@
                     sudo apt-get update
                 \end{lstlisting}
 
-            \item[2.] Installez les dépendances de Docker:
+            \item[2.] Installez les dépendances de \docker{}:
 
                 \begin{lstlisting}
                     sudo apt-get install \
@@ -97,7 +102,7 @@
 
 \newpage
 
-            \item[3.] Ajoutez la clé GPG officielle de Docker:
+            \item[3.] Ajoutez la clé GPG officielle de \docker{}:
 
                 \begin{lstlisting}
                     sudo mkdir -m 0755 -p /etc/apt/keyrings
@@ -109,7 +114,7 @@
             \item[4.] Configurez le répertoire:\\
 
                 \begin{footnotesize}
-                    \textit{\textdollar(lsb\_release -cs)} doit dans quelques cas être remplacé par votre version de distribution linux.\\
+                    \textit{\textdollar(lsb\_release -cs)} doit dans quelques cas être remplacé par votre version de distribution \linux{}.\\
                     Dans l'installation de référence on a remplacé par \textit{jammy}.
                 \end{footnotesize}
                 \begin{lstlisting}
@@ -137,7 +142,7 @@
                 \end{footnotesize}
 
                 \bigskip
-            \item[7.] Installez Docker Desktop:
+            \item[7.] Installez \dockerdesktop{}:
 
             
                 \begin{footnotesize}
@@ -153,22 +158,22 @@
 \bigskip
 
         \begin{footnotesize}
-            L'Installation de référence pour ce guide a été faite sur une distribution Linux Mint (distibution basé sur ubuntu)\\
+            L'Installation de référence pour ce guide a été faite sur une distribution \linux{} Mint (distibution basé sur \ubuntu{})\\
         \end{footnotesize}
 
 \newpage
 
-    \subsection{Installation Windows}
+    \subsection[Installation Windows]{Installation \windows{}}
 
         \begin{figure}[h]
             \centering
             \includegraphics[scale=0.025]{Images_formation/WindowsLogo.png}
         \end{figure}
 
-        Il est fortement conseillé d'utiliser \href{https://learn.microsoft.com/fr-fr/windows/wsl/install}{WSL2}. C'est une application windows permettant d'installer un environnement linux avec la distribution de votre choix nativement sous windows.
+        Il est fortement conseillé d'utiliser \href{https://learn.microsoft.com/fr-fr/windows/wsl/install}{WSL2}. C'est une application \windows{} permettant d'installer un environnement \linux{} avec la distribution de votre choix nativement sous \windows{}.
         
         \begin{itemize}
-            \item[1.] Téléchargez \href{https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe}{Docker Desktop}
+            \item[1.] Téléchargez \href{https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe}{\dockerdesktop{}}
             
             \item[2.] Exécutez le fichier d'installation .exe
             
@@ -180,11 +185,11 @@
                 \end{lstlisting}
         \end{itemize}
 
-        Docker et wsl2 sont totalement compatibles. De plus l'utilisation de \href{https://code.visualstudio.com/docs/remote/wsl}{VSCode} est conseillé car il permet l'utilisation de l'extension docker.
+        \docker{} et wsl2 sont totalement compatibles. De plus l'utilisation de \href{https://code.visualstudio.com/docs/remote/wsl}{VSCode} est conseillé car il permet l'utilisation de l'extension docker.
 
 
 
-    \subsection{Installation MacOS}
+    \subsection[Installation MacOS]{Installation \macos{}}
 
         \begin{figure}[h]
             \centering
@@ -192,16 +197,16 @@
         \end{figure}
 
         \begin{itemize}
-            \item[1.] Téléchargez Docker Desktop \href{https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=module}{Apple Chip} ou \href{https://desktop.docker.com/mac/main/amd64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=module}{Intel Chip}
-            \item[2.] Installez Docker Desktop dans le dossier application
+            \item[1.] Téléchargez \dockerdesktop{} \href{https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=module}{Apple Chip} ou \href{https://desktop.docker.com/mac/main/amd64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=module}{Intel Chip}
+            \item[2.] Installez \dockerdesktop{} dans le dossier application
         \end{itemize}
 
 \newpage
 
-    \subsection{Aperçu}
+    \subsection[Aperçu]{Aperçu}
 
-        Si tout s'est bien passé vous êtes en mesure de lancer Docker Desktop. 
-        Vous avez donc le panneau de contrôle de Docker Desktop qui devrait ressembler à ça:\\
+        Si tout s'est bien passé vous êtes en mesure de lancer \dockerdesktop{}. 
+        Vous avez donc le panneau de contrôle de \dockerdesktop{} qui devrait ressembler à ça:\\
         
         \begin{figure}[h]
             \centering
@@ -219,10 +224,10 @@
 
 \newpage
 
-\section{Création Projet Laravel}
+\section[Création Projet Laravel]{Création Projet \laravel{}}
 
     \subsection{Création du dossier}
-        Pour créer un nouveau projet laravel dans un dossier "exemple-app" il suffit juste d'entrer la ligne de commande:
+        Pour créer un nouveau projet \laravel{} dans un dossier ``exemple-app'' il suffit juste d'entrer la ligne de commande:
 
         \begin{lstlisting}
             curl -s https://laravel.build/example-app | bash
@@ -260,11 +265,11 @@
 
 \newpage
 
-    \subsection{Ajout PhpMyAdmin}
+    \subsection[Ajout PhpMyAdmin]{Ajout \phpmyadmin{}}
 
-        On va ajouter un service à notre projet qui est nécessaire à la gestion de notre base de donnée,\\ \textit{PhpMyAdmin}.
+        On va ajouter un service à notre projet qui est nécessaire à la gestion de notre base de donnée,\\ \phpmyadmin{}.
         
-        Pour ce faire, rendez-vous à la fin de la section \textit{services}, et ajoutez y \textit{PhpMyAdmin} comme suit:
+        Pour ce faire, rendez-vous à la fin de la section \verb|services|, et ajoutez y \phpmyadmin{} comme suit:
 
         \begin{lstlisting}
             phpmyadmin:
@@ -277,9 +282,9 @@
                     - PMA_ARBITRARY=1
         \end{lstlisting}
 
-        Une fois cela fait, PhpMyAdmin est intégré au projet.
+        Une fois cela fait, \phpmyadmin{} est intégré au projet.
 
-    \section{Utilisation}
+    \section[Utilisation]{Utilisation}
     Pour utiliser le script, il vous faudra utiliser la commande suivante dans le dossier du projet (sail est installé par defaut lors de la création du projet):
 
     \begin{lstlisting}
@@ -292,7 +297,7 @@
         alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
     \end{lstlisting}
     
-    \subsection{Démarrage du container}
+    \subsection[Démarrage du container]{Démarrage du container}
         Pour lancer le container et ainsi pouvoir travailler sur le projet, entrez dans le dossier de votre projet via un terminal et lancer la commande:
         
         \begin{lstlisting}

@@ -37,17 +37,28 @@
 \RequirePackage{ulem}           % For extra style for underlining, crossing out, etc
 \RequirePackage{xspace}         % For smart management of spaces at the end of a command
 \RequirePackage{tikz}           % The famous package for graphical drawing (used for big quotes
-\RequirePackage[bookmarks=false]{hyperref}  % For links and other hyperref (figure or table number)
-\RequirePackage{wrapfig}
+\RequirePackage{wrapfig}        % Package to embed figures in texts
+\RequirePackage{fancyvrb}       % Package to allow \verb inside footnotes
+\RequirePackage[export]{adjustbox}      % Package to put figures to the left and right instead of \centering
+\RequirePackage[inline, shortlabels]{enumitem}      % Package to allow a list to follow a wrapfig and still align correctely.
+
+\setlist{itemjoin ={,\enspace},itemjoin* = { and\enspace}}
+
+\RequirePackage{letltxmacro}
+\RequirePackage{xparse}
+\RequirePackage{titlesec}
 \RequirePackage{color}
 \RequirePackage{listings,lstautogobble}
-\RequirePackage{hyperref}
+\RequirePackage[
+    bookmarks=true,
+    pdfusetitle
+]{hyperref}
 \hypersetup{
     pdffitwindow=true,
     pdfstartview={FitV},
     pdfnewwindow=true,
     colorlinks,
-    linktocpage=true, % link is on the page number in the table of contents (false to put it on the title)
+    linktocpage=false, % link is on the page number in the table of contents (false to put it on the title)
     linkcolor=red_nhitec,
     urlcolor=red_nhitec
 }
@@ -386,4 +397,66 @@
  \ignorespaces
 }
 
+\newcommand{\php}[0]{PHP\includegraphics[height=10pt]{figures-logos/PHP.pdf}\xspace}
+\newcommand{\js}[0]{Javascript\includegraphics[height=10pt]{figures-logos/javascript.pdf}\xspace}
+\newcommand{\html}[0]{HTML\includegraphics[height=10pt]{figures-logos/html5.pdf}\xspace}
+\newcommand{\laravel}[0]{Laravel \includegraphics[height=10pt]{figures-logos/laravel.pdf}\xspace}
+\newcommand{\vite}[0]{Vite\includegraphics[height=10pt]{figures-logos/vite.pdf}\xspace}
+\newcommand{\phpmyadmin}[0]{PhpMyAdmin \includegraphics[height=10pt]{figures-logos/phpmyadmin.pdf}\xspace}
+\newcommand{\docker}[0]{Docker \includegraphics[height=10pt]{figures-logos/docker.pdf}\xspace}
+\newcommand{\dockerdesktop}[0]{Docker Desktop \includegraphics[height=10pt]{figures-logos/docker.pdf}\xspace}
+\newcommand{\laravelsail}[0]{Laravel Sail \includegraphics[height=10pt]{figures-logos/laravel-sail.pdf}\xspace}
+\newcommand{\macos}[0]{MacOS \includegraphics[height=10pt]{figures-logos/apple.pdf}\xspace}
+\newcommand{\linux}[0]{Linux \includegraphics[height=10pt]{figures-logos/linux.pdf}\xspace}
+\newcommand{\windows}[0]{Windows \includegraphics[height=10pt]{figures-logos/windows.pdf}\xspace}
+\newcommand{\github}[0]{GitHub \includegraphics[height=10pt]{figures-logos/githubdesktop.pdf}\xspace}
+\newcommand{\ubuntu}[0]{Ubuntu \includegraphics[height=10pt]{figures-logos/ubuntu.pdf}\xspace}
+\newcommand{\mysql}[0]{MySQL\xspace}
+
+\newcommand{\db}[0]{base de donnée\xspace}
+
+
+\LetLtxMacro{\oldsubsubsection}{\subsubsection}
+
+\RenewDocumentCommand{\subsubsection}{ O{} O{} m}{
+    \oldsubsubsection[#1]{#3}
+    \ifthenelse{\equal{#2}{}}{}{
+        \begin{wrapfigure}[0]{l}{0.4cm}
+          \vspace{-1.4cm}
+          \href{https://#2}{\includegraphics[height=14pt]{figures-logos/doc_logo.pdf}}
+        \end{wrapfigure}
+    }
+}
+
+
+\titleclass{\subsubsubsection}{straight}[\subsection]
+
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+\renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
+
+\titleformat{\subsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
+  {3.25ex \@plus1ex \@minus.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}%
+  {3.25ex \@plus1ex \@minus .2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\def\toclevel@subsubsubsection{4}
+\def\toclevel@paragraph{5}
+\def\toclevel@paragraph{6}
+\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
+\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+  
 \makeatother
