@@ -411,6 +411,7 @@
 \newcommand{\windows}[0]{Windows \includegraphics[height=10pt]{figures-logos/windows.pdf}\xspace}
 \newcommand{\github}[0]{GitHub \includegraphics[height=10pt]{figures-logos/githubdesktop.pdf}\xspace}
 \newcommand{\ubuntu}[0]{Ubuntu \includegraphics[height=10pt]{figures-logos/ubuntu.pdf}\xspace}
+\newcommand{\vscode}[0]{VS Code \includegraphics[height=10pt]{figures-logos/vscode.pdf}\xspace}
 \newcommand{\mysql}[0]{MySQL\xspace}
 
 \newcommand{\db}[0]{base de donnée\xspace}
