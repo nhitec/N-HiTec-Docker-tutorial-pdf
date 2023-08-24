@@ -1,13 +1,11 @@
 \documentclass[internal]{nhitec_design}
 
-\usepackage{listings}
-
 \author{ROTHEUDT Thomas et MOUCHAMPS Antoine}
 \date{\today}
 
 \title{Installation de Laravel \& Docker}
 
-\newRem{tom}{green!60!black}
+\VerbatimFootnotes
 
 \begin{document}
 
@@ -104,7 +102,7 @@ Choisissez la section correspondant à votre système d'exploitation:
      
             \item[1.] Mettez à jour l'index des paquets apt et des paquets d'installation pour permettre à apt d'utiliser un dépôt sur HTTPS:
             
-                \begin{lstlisting}[style=mystyle]
+                \begin{lstlisting}
                     sudo apt-get update
                 \end{lstlisting}
 
@@ -263,16 +261,22 @@ Choisissez la section correspondant à votre système d'exploitation:
 
 
 \newpage
-\section[Création Projet Laravel]{Création Projet \laravel{}}
+\section[Création Projet Laravel]{Création Projet Laravel \includegraphics[height=20pt]{figures-logos/laravel.pdf}}
 
-    \subsection{Création du dossier}
+\begin{enumerate}
+    \item Si vous souhaitez créer un nouveau projet vierge, allez à la \textsc{section~\ref{sec:new_project}}.
+    \item Si vous souhaitez importer un projet depuis \github{}, allez à la \textsc{section~\ref{sec:project_git}}.
+\end{enumerate}
+
+\subsection[Création d'un nouveau projet]{Création d'un nouveau projet\label{sec:new_project}}
+    \subsubsection{Création du dossier}
         Pour créer un nouveau projet \laravel{} dans un dossier ``exemple-app'' il suffit juste d'entrer la ligne de commande:
 
         \begin{lstlisting}
             curl -s https://laravel.build/example-app | bash
         \end{lstlisting}
 
-        Avec cette commande votre projet sera installé avec plusieurs services de base (mysql, redis, et d'autres). PS: la création peut prendre du temps (5-10 minutes).
+        Avec cette commande votre projet sera installé avec plusieurs services de base (mysql, redis, et d'autres). PS:la création peut prendre du temps (5\-10 minutes).
 
         il est possible de choisir les services à installer avec le mot clé \textit{with}. Dans le cadre de ce tutoriel, nous aurons besoin de 3 services: \mysql, mailpit et \phpmyadmin. Les 2 premiers peuvent être téléchargés avec laravel comme suit:
 
@@ -301,9 +305,7 @@ Choisissez la section correspondant à votre système d'exploitation:
         Vous pouvez voir qu'il est composé de plusieurs \href{https://docs.docker.com/compose/compose-file/}{section}, \textit{Version, services, network, volumes}. Chaque section à son utilitée. Nous allons nous concentrer sur la section service du fichier. Plus précisement, nous allons ajouter un service.\\ 
 
 
-\newpage
-
-    \subsection[Ajout PhpMyAdmin]{Ajout \phpmyadmin{}}
+    \subsubsection[Ajout PhpMyAdmin]{Ajout \phpmyadmin{}}
 
         On va ajouter un service à notre projet qui est nécessaire à la gestion de notre base de donnée,\\ \phpmyadmin{}.
         
@@ -321,8 +323,51 @@ Choisissez la section correspondant à votre système d'exploitation:
         \end{lstlisting}
 
         Une fois cela fait, \phpmyadmin{} est intégré au projet.
+        \hyperref[sec:utilisation]{Pour passer à la suite}
+    
+    \subsection[Ajout d'un projet depuis GitHub]{Ajout d'un projet depuis \github{} \label{sec:project_git}}
 
-    \section[Utilisation]{Utilisation}
+    Lorsque vous clonez un \texttt{repo} sur votre machine, le site manque des composants essentiels à son fonctionnements: ses packages. Pour installer ces packages, il est nécessaire d'effectuer la commande \verb|composer install|, sauf que vous n'avez pas \texttt{composer} d'installer. En revanche, \texttt{composer} est utilisable grâce à  \laravelsail{} par \verb|sail composer install|!
+
+    Le petit hick, c'est que \laravelsail{} est un package\ldots à installer avec \verb|composer install|\footnote{Le serpent qui se mort la queue, l'oeuf ou la poule, appellez ce paradoxe comme vous le voulez.}. 
+
+    Heureusement, \laravel{} a la sollution pour nous. Il suffit de se rendre dans le dossier de votre projet fraichement installé et de taper:
+    \begin{lstlisting}
+        docker run --rm \
+            -u "$(id -u):$(id -g)" \
+            -v "$(pwd):/var/www/html" \
+            -w /var/www/html \
+            laravelsail/php82-composer:latest \
+            composer install --ignore-platform-reqs
+    \end{lstlisting}
+
+    de cette manière, les packages de \texttt{composer} seront installés. Plus de renseignements sur la \href{https://laravel.com/docs/10.x/sail#installing-composer-dependencies-for-existing-projects}{Doc \laravel}.
+
+    % A METTRE DANS LA SECTION D APRES EN FAIT
+    En ce qui concerne les librairies \js{}, vous pouvez executer 
+    \begin{lstlisting}
+        sail npm install
+    \end{lstlisting}
+    pour installer \vite.
+
+    \subsubsection[Setup]{Setup}
+    Enfin, il faut setup les paramètres du site en créant un fichier \verb|.env|\footnote{ps: vous pouvez copier et renommer le fichier \verb|.env example|, mais ne supprimez pas l'original!}. Vous pouvez modifier:
+
+    \begin{itemize}
+        \item \verb|APP_NAME|: changer le nom de votre application.
+        \item \verb|APP_URL|: changez l'url pour accéder à votre site. Attention, cette url doit être conforme à celle écrite dans le fichier \verb|hosts| de la \textsc{section~WIP}
+        \item \verb|DATABASE_NAME|: changer le nom de votre \db{} comme bon vous semble.
+    \end{itemize}
+    A priori, les autres champs doivent rester inchangés.
+
+    Enfin, il ne vous reste plus qu'à exécuter 
+    \begin{lstlisting}
+        sail artisan key: generate
+    \end{lstlisting}
+
+    \hyperref[sec:utilisation]{Pour passer à la suite}
+
+\section[Utilisation]{Utilisation\label{sec:utilisation}}
     Pour utiliser le script, il vous faudra utiliser la commande suivante dans le dossier du projet (sail est installé par defaut lors de la création du projet):
 
     \begin{lstlisting}
