@@ -1,0 +1,49 @@
+\section[Introduction]{Introduction}
+
+\subsection[Qu'est-ce que Docker?]{Qu'est-ce que \docker{}?}
+    
+    \docker{} est un outil open-source créé en 2012 par des français. Cet outil permet de créer, de déployer et de lancer des applications tournant dans un conteneur. Ces conteneurs sont en réalité des environnements dans lesquels les applications tournent.
+    Ils sont créés grâce à des images qui sont des fichiers \docker{}, ainsi n'importe quel conteneur est assuré de tourner sur n'importe quel machine sans se soucier des configurations locales.\\
+    L'outil est tellement populaire que les mainteneurs de librairies ou de logiciels maintiennent des images \docker{} (dans notre cas on verra que \laravelsail{} possède une image \docker{} qui est maintenue à jour régulièrement)
+    Il permet donc de ``centraliser'' l'environment sur lequel une application est développée. 
+
+    \begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[scale=0.4]{Images_formation/LogoDocker.pdf}
+        \end{subfigure}%
+    \end{figure}
+    
+\subsection[Pourquoi Docker?]{Pourquoi \docker{}?}
+
+    Un conteneur \docker{} possède de nombreux avantages comparé aux machines virtuels. Premièrement, il utilise les ressources d'un système plus éfficacement qu'une VM tout en gardant ses avantages (isolation et reproductibilité). 
+
+    \begin{wrapfigure}{l}{0.18\textheight}
+        \centering
+        \includegraphics[width=0.2\textwidth]{Images_formation/Iconconteneur.pdf}
+    \end{wrapfigure}
+
+    Il garanti d'être identique quel que soit le système, ainsi chaque membres d'un projet est certain de travailler sur le même environment sans se soucier de la portabilité de l'application sur l'environment final.
+    
+    Les conteneurs sont isolés de la machine hôte, ainsi vous pouvez avoir plusieurs versions différentes de dépendances pour plusieurs projets.
+
+    Enfin, la modifications d'un conteneurs est extrêmement simplifié comparé à une VM où les mises à jour sont souvent complexes et laborieuse.
+
+    Pour résumer, un conteneur \docker{} est flexible, léger, portable.
+
+\subsection[Qu'est-ce que Laravel Sail?]{Qu'est-ce que \laravelsail{}?}
+    
+    \laravelsail{} est une interface de ligne de commande légère pour interagir avec l'environnement de développement \docker{} par défaut de \laravel{}. 
+    
+    \begin{wrapfigure}{l}{0.2\textwidth}
+        \centering
+        \includegraphics[width=0.2\textwidth]{Images_formation/LaravelLogo.pdf}
+    \end{wrapfigure}
+    
+    Sail est un excellent point de départ pour construire une application \laravel{} en utilisant \php{}, \mysql et Redis sans avoir besoin d'une expérience préalable de \docker{}.
+
+    Au cœur de Sail se trouve le fichier docker-compose.yml et le script sail qui est stocké à la racine de votre projet. Le script sail fournit une CLI (command line interface) avec des méthodes pratiques pour interagir avec les conteneurs \docker{} définis par le fichier docker-compose.yml.
+
+    \laravelsail{} est pris en charge sur \macos{}, \linux{} et \windows{} (via WSL2).
+
+    Pour résumer, le scrip sail permet de gérer le projet \laravel{} à l'intérieur du conteneur du projet. De plus \laravelsail{} est complètement compatible avec \docker{}, ce qui permet des interactions plus simples avec les conteneurs.

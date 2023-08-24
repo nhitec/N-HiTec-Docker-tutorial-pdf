@@ -1,0 +1,34 @@
+\section[Utilisation]{Utilisation\label{sec:utilisation}}
+
+Pour utiliser le script, il vous faudra utiliser la commande suivante dans le dossier du projet (sail est installé par defaut lors de la création du projet):
+
+\begin{lstlisting}
+    ./vendor/bin/sail [command] [options] [arguments]
+\end{lstlisting}
+
+Vous pouvez créer un alias pour sail en ajoutant la ligne suivante à votre .bashrc, zshrc, ect: 
+
+\begin{lstlisting}
+    alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+\end{lstlisting}
+
+\subsection[Démarrage du container]{Démarrage du container}
+    Pour lancer le container et ainsi pouvoir travailler sur le projet, entrez dans le dossier de votre projet via un terminal et lancer la commande:
+    
+    \begin{lstlisting}
+        sail up -d
+    \end{lstlisting}
+
+    Cette commande lancera le container en mode détacher pour garder l'accès au terminal (pratique si l'on travaille sur VSCode)\\
+    \footnotesize{On peut aussi lancer dans un terminal avec \textit{sail up}}
+
+
+    Vous pouvez maintenant avoir accès à la page de votre projet en allant sur \textit{localhost} via un moteur de recherche comme Mozilla, Google, ect.
+
+\subsection{Arrêt du container}
+
+Pour éteintre le container lorsque vous avez finis de travailler, tapez la commande
+
+\begin{lstlisting}
+    sail down
+\end{lstlisting}
