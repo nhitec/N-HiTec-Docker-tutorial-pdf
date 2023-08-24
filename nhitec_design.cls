@@ -81,14 +81,15 @@
     morekeywords={*,...},            % if you want to add more keywords to the set
     %numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
     %numbersep=5pt,                   % how far the line-numbers are from the code
-    rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+    rulecolor=\color{red_nhitec},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
     showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
     showstringspaces=false,          % underline spaces within strings only
     showtabs=false,                  % show tabs within strings adding particular underscores
     stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
     tabsize=1,	                   % sets default tabsize to 2 spaces
     autogobble=true,
-    basicstyle=\footnotesize
+    basicstyle=\footnotesize,
+    columns=fullflexible
 }
 
 

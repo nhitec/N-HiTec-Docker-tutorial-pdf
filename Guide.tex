@@ -104,7 +104,7 @@ Choisissez la section correspondant à votre système d'exploitation:
      
             \item[1.] Mettez à jour l'index des paquets apt et des paquets d'installation pour permettre à apt d'utiliser un dépôt sur HTTPS:
             
-                \begin{lstlisting}
+                \begin{lstlisting}[style=mystyle]
                     sudo apt-get update
                 \end{lstlisting}
 
@@ -201,7 +201,7 @@ Choisissez la section correspondant à votre système d'exploitation:
             \includegraphics[width=0.75\textwidth]{Images_formation/user_creation.pdf}
         \end{figure}
 
-        Ici, vous devez créer un utilisateur ainsi qu'ajouter un mot de passe\footnote{Lorsque vous tapez votre mot de passe, il est normal que les charactères ne s'affichent pas.}
+        Ici, vous devez créer un utilisateur ainsi qu'ajouter un mot de passe\footnote{Lorsque vous tapez votre mot de passe, il est normal que les charactères ne s'affichent pas.}. Attention, vous devrez utiliser votre mot de passe de temps en temps donc ne l'oubliez pas!
 
         Une fois ces étapes effectuées sans accros, vous pouvez passer à l'installation de \dockerdesktop à proprement parlé.
 
@@ -256,7 +256,7 @@ Choisissez la section correspondant à votre système d'exploitation:
     \subsection[VS Code]{Utilisez \vscode!!}
     Enfin, pour utiliser tout ce que nous venons d'installer, il faut un éditeur de code efficace. \href{https://code.visualstudio.com/}{\vscode{}} permet, via ses extensions d'interagir avec \docker{} et WSL2 en parfaite harmonie, c'est pourquoi nous le recommandons CHAUDEMENT. 
 
-    Une fois \vscode{} installez, ajouter les extensions WSL (de Microsoft) et Docker (de Microsoft également).
+    Une fois \vscode{} installé, ajouter les extensions WSL (de Microsoft) et Docker (de Microsoft également).
 
 
 
@@ -272,16 +272,15 @@ Choisissez la section correspondant à votre système d'exploitation:
             curl -s https://laravel.build/example-app | bash
         \end{lstlisting}
 
-        Avec cette commande votre projet sera installé avec plusieurs services de base (mysql, redis, et d'autres)
+        Avec cette commande votre projet sera installé avec plusieurs services de base (mysql, redis, et d'autres). PS: la création peut prendre du temps (5-10 minutes).
 
-        il est possible de choisir les services à installer avec le mot clé \textit{with}
+        il est possible de choisir les services à installer avec le mot clé \textit{with}. Dans le cadre de ce tutoriel, nous aurons besoin de 3 services: \mysql, mailpit et \phpmyadmin. Les 2 premiers peuvent être téléchargés avec laravel comme suit:
 
         \begin{lstlisting}
-            curl -s "https://laravel.build/example-app?with=mysql,redis" | bash
+            curl -s "https://laravel.build/example-app?with=mysql,mailpit" | bash
         \end{lstlisting}
-        Mais pour plus de claireté, on va utiliser la première commande.
 
-        une fois lancé le projet va se créer (cela peut prendre un certain temps)
+        une fois la commande lancée le projet va se créer (cela peut prendre un certain temps)
 
         \begin{figure}[h]
             \centering
