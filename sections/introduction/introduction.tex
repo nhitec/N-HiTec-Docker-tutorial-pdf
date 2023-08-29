@@ -2,17 +2,17 @@
 
 \subsection[Qu'est-ce que Docker?]{Qu'est-ce que \docker{}?}
     
+    \begin{wrapfigure}{r}{0.18\textheight}
+        \centering
+        \includegraphics[width=0.2\textwidth]{Images_formation/LogoDocker.pdf}
+    \end{wrapfigure}
+
     \docker{} est un outil open-source créé en 2012 par des français. Cet outil permet de créer, de déployer et de lancer des applications tournant dans un conteneur. Ces conteneurs sont en réalité des environnements dans lesquels les applications tournent.
     Ils sont créés grâce à des images qui sont des fichiers \docker{}, ainsi n'importe quel conteneur est assuré de tourner sur n'importe quel machine sans se soucier des configurations locales.\\
     L'outil est tellement populaire que les mainteneurs de librairies ou de logiciels maintiennent des images \docker{} (dans notre cas on verra que \laravelsail{} possède une image \docker{} qui est maintenue à jour régulièrement)
     Il permet donc de ``centraliser'' l'environment sur lequel une application est développée. 
 
-    \begin{figure}[h]
-        \centering
-        \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[scale=0.4]{Images_formation/LogoDocker.pdf}
-        \end{subfigure}%
-    \end{figure}
+
     
 \subsection[Pourquoi Docker?]{Pourquoi \docker{}?}
 
@@ -35,12 +35,12 @@
     
     \laravelsail{} est une interface de ligne de commande légère pour interagir avec l'environnement de développement \docker{} par défaut de \laravel{}. 
     
-    \begin{wrapfigure}{l}{0.2\textwidth}
+    \begin{wrapfigure}[7]{l}{0.2\textwidth}
         \centering
         \includegraphics[width=0.2\textwidth]{Images_formation/LaravelLogo.pdf}
     \end{wrapfigure}
     
-    Sail est un excellent point de départ pour construire une application \laravel{} en utilisant \php{}, \mysql et Redis sans avoir besoin d'une expérience préalable de \docker{}.
+    Sail est un excellent point de départ pour construire une application \laravel{} en utilisant \php{}, \mysql{} et Redis sans avoir besoin d'une expérience préalable de \docker{}.
 
     Au cœur de Sail se trouve le fichier docker-compose.yml et le script sail qui est stocké à la racine de votre projet. Le script sail fournit une CLI (command line interface) avec des méthodes pratiques pour interagir avec les conteneurs \docker{} définis par le fichier docker-compose.yml.
 

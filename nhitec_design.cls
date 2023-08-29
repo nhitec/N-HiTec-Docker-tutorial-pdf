@@ -400,7 +400,7 @@
 
 \newcommand{\php}[0]{PHP\includegraphics[height=10pt]{figures-logos/PHP.pdf}\xspace}
 \newcommand{\js}[0]{Javascript\includegraphics[height=10pt]{figures-logos/javascript.pdf}\xspace}
-\newcommand{\html}[0]{HTML\includegraphics[height=10pt]{figures-logos/html5.pdf}\xspace}
+\newcommand{\css}[0]{CSS\includegraphics[height=10pt]{figures-logos/css.pdf}\xspace}\newcommand{\html}[0]{HTML\includegraphics[height=10pt]{figures-logos/html5.pdf}\xspace}
 \newcommand{\laravel}[0]{Laravel \includegraphics[height=10pt]{figures-logos/laravel.pdf}\xspace}
 \newcommand{\vite}[0]{Vite\includegraphics[height=10pt]{figures-logos/vite.pdf}\xspace}
 \newcommand{\phpmyadmin}[0]{PhpMyAdmin \includegraphics[height=10pt]{figures-logos/phpmyadmin.pdf}\xspace}

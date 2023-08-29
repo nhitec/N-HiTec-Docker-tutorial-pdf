@@ -6,22 +6,20 @@ Choisissez la section correspondant à votre système d'exploitation:
     \centering
     \begin{minipage}{0.32\textwidth}
         \centering
-        \includegraphics[scale=0.05]{Images_formation/LinuxLogo.pdf}
+        \hyperref[sec:installation_linux]{\includegraphics[scale=0.05]{Images_formation/LinuxLogo.pdf}}
         \caption*{\underline{Linux}: \textsc{section~\ref{sec:installation_linux}}}
     \end{minipage} 
     \begin{minipage}{0.32\textwidth}
         \centering
-        \includegraphics[scale=0.025]{Images_formation/WindowsLogo.pdf}
+        \hyperref[sec:installation_windows]{\includegraphics[scale=0.020]{Images_formation/WindowsLogo.pdf}}
         \caption*{\underline{Windows}: \textsc{section~\ref{sec:installation_windows}}}
     \end{minipage}
     \begin{minipage}{0.32\textwidth}
         \centering
-        
-        \includegraphics[scale=0.025]{Images_formation/MacosLogo.pdf}
+        \hyperref[sec:installation_macos]{\includegraphics[scale=0.025]{Images_formation/MacosLogo.pdf}}
         \caption*{\underline{MacOS}: \textsc{section~\ref{sec:installation_macos}}}
     \end{minipage}
 \end{figure}
-
 \subsection[Installation Linux]{Installation \linux{}\label{sec:installation_linux}}
 
     L'Installation \linux{} nécéssite de suivre quelques étapes de plus que pour l'Installation \macos{} ou \windows{}.\\
@@ -96,7 +94,7 @@ Choisissez la section correspondant à votre système d'exploitation:
 
     \end{itemize}
 
-\bigskip
+    \bigskip
 
     \begin{footnotesize}
         L'Installation de référence pour ce guide a été faite sur une distribution \linux{} Mint (distibution basé sur \ubuntu{})\\
@@ -160,25 +158,29 @@ Choisissez la section correspondant à votre système d'exploitation:
 \newpage
 
 \subsection[Aperçu]{Aperçu\label{sec:suite}}
-
-    Si tout s'est bien passé vous êtes en mesure de lancer \dockerdesktop{}. 
-    Vous avez donc le panneau de contrôle de \dockerdesktop{} qui devrait ressembler à ça:\\
-    
+    Si tout s'est bien passé vous êtes en mesure de lancer \dockerdesktop{}. Vous avez donc le panneau de contrôle de \dockerdesktop{} qui devrait ressembler à ça:\\
     \begin{figure}[h]
         \centering
-        \includegraphics[scale=0.25]{Images_formation/PanelDocker.pdf}
+        \includegraphics[width=0.7\textwidth]{Images_formation/PanelDocker.pdf}
     \end{figure}
 
     Vous pouvez voir différents onglets sur la gauche:
 
     \begin{itemize}
-        \item Conteneurs: Cet onglet va contenir tous les conteneurs que vous avez créés. Les conteneurs sont en quelque sorte des images déployées et exécutées lorsque \docker{} tourne.\vspace*{0.5cm}
-        \item Images: Cet onglet va contenir toutes les images d'installation des services installés dans nos conteneurs. Les images décrivent l'environnement du serveur, les packages installés et toutes les configurationde celui-ci.\vspace*{0.5cm}
-        \item Volumes: Cet onglet contient les volumes liés aux services qui contiennent les data de nos applications. Les volumes servent à conserver les données des \db lorsque nous éteignons un container et qu'on le relance.\vspace*{0.5cm}
+        \item Conteneurs: Cet onglet va contenir tous les conteneurs que vous avez créés. Les conteneurs sont en quelque sorte des images déployées et exécutées lorsque \docker{} tourne.
+        \item Images: Cet onglet va contenir toutes les images d'installation des services installés dans nos conteneurs. Les images décrivent l'environnement du serveur, les packages installés et toutes les configurationde celui-ci.
+        \item Volumes: Cet onglet contient les volumes liés aux services qui contiennent les data de nos applications. Les volumes servent à conserver les données des \db{} lorsque nous éteignons un container et qu'on le relance.
         \item Dev Environnements: une feature très intéressante permettant de créer des environnements de développement \footnotesize{\href{https://docs.docker.com/desktop/dev-environments/}{(plus d'informations)}}.
     \end{itemize}
 
 \subsection[VS Code]{Utilisez \vscode!!}
-Enfin, pour utiliser tout ce que nous venons d'installer, il faut un éditeur de code efficace. \href{https://code.visualstudio.com/}{\vscode{}} permet, via ses extensions d'interagir avec \docker{} et WSL2 en parfaite harmonie, c'est pourquoi nous le recommandons CHAUDEMENT. 
+    Enfin, pour utiliser tout ce que nous venons d'installer, il faut un éditeur de code efficace. \href{https://code.visualstudio.com/}{\vscode{}} permet, via ses extensions d'interagir avec \docker{} et WSL2 en parfaite harmonie, c'est pourquoi nous le recommandons CHAUDEMENT. 
 
-Une fois \vscode{} installé, ajouter les extensions WSL (de Microsoft) et Docker (de Microsoft également).
+    \begin{wrapfigure}{r}{0.2\textwidth}
+        \centering
+        \vspace*{-0.5cm}
+        \includegraphics[width=0.2\textwidth]{Images_formation/connect_to_wsl.pdf}
+    \end{wrapfigure}
+    Une fois \vscode{} installé, ajouter les extensions WSL (de Microsoft) et Docker (de Microsoft également). Une fois cela fait, cliquez sur le petit carré montré ci-joint.
+
+    Ensuite, sélectionner \verb|Connect to WSL|. C'est ici que vous devrez effectuer les prochaines commandes.

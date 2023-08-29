@@ -14,6 +14,18 @@
     sections/utilisation/utilisation,
 }
 
+\lstnewenvironment{itemlisting}[1][]
+ {%
+  \mbox{}
+  \vspace*{-\baselineskip}
+  \lstset{
+    xleftmargin=\leftmargin,
+    linewidth=\linewidth,
+    #1
+  }%
+ }
+ {}
+
 \begin{document}
 
 \maketitle
@@ -30,8 +42,12 @@
 
 \include{sections/installation-docker/installation-docker}
 
+\include{sections/utilisation/utilisation}
+
 \include{sections/creation-projet-laravel/creation-project-laravel}
 
-\include{sections/utilisation/utilisation}
+\section[Ensuite]{Ensuite\label{sec:suite}}
+
+Bien, avec votre site déployé et opérationnel, vous êtes prêts pour passer à la formation suivante dans laquelle vous créerez véritablement votre site.
 
 \end{document}

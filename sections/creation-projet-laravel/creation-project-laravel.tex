@@ -33,13 +33,12 @@
             \end{subfigure}
         \end{figure}
 
-
-        Une fois le dossier du projet créé vous allez rentrer dans le Dossier et ouvrir le fichier \textit{docker-compose.yml}.
+        Une fois le dossier du projet créé vous allez rentrer dans le dossier (\textit{File} et ensuite \textit{Open Folder\ldots}) et ouvrir le fichier \verb|docker-compose.yml|.
 
         Ce fichier représente la configuration générale de votre conteneur, c'est ici que l'on va définir les services à installer, les versions, les images, ect.
         Ce fichier est très important, sans lui, pas de conteneur.
 
-        Vous pouvez voir qu'il est composé de plusieurs \href{https://docs.docker.com/compose/compose-file/}{section}, \textit{Version, services, network, volumes}. Chaque section à son utilitée. Nous allons nous concentrer sur la section service du fichier. Plus précisement, nous allons ajouter un service.\\ 
+        Vous pouvez voir qu'il est composé de plusieurs \href{https://docs.docker.com/compose/compose-file/}{sections}, \textit{Version, services, network, volumes}. Chaque section à son utilitée. Nous allons nous concentrer sur la section \verb|service| du fichier. Plus précisement, nous allons ajouter un service.\\ 
 
 
     \subsubsection[Ajout PhpMyAdmin]{Ajout \phpmyadmin{}}
@@ -66,23 +65,42 @@
         Une fois cela fait, \phpmyadmin{} est intégré au projet.
 
         \subsubsection{Setup}
-        Il y'a plusieurs choses à faire avant de pouvoir accéder à votre site. Premièrement, installez les librairies \js{} telle que \vite{} avec \verb|sail npm install|.
+        Il y'a plusieurs choses à faire avant de pouvoir accéder à votre site. Premièrement, configurer le fichier \verb|.env|:
 
-        Ensuite, il faut configurer le fichier \verb|.env|:
         \begin{itemize}
             \item \verb|APP_NAME|: changer le nom de votre application.
-            \item \verb|APP_URL|: changer l'URL pour accéder à votre site, attention, cette url doit être conforme à celle écrite dans le fichier hosts de la section suivante.
+            \item \verb|APP_URL|: changer l'URL pour accéder à votre site, attention, cette url doit être conforme à celle écrite dans le fichier \verb|hosts| de la section suivante. Par example, \verb|http://example|.
             \item \verb|DB_DATABASE|: changez le nom de votre \db{} comme bon vous semble.
         \end{itemize}
         Les autres champs peuvent à priori rester inchangés.
-        
 
+        Une fois cela fait, vous pouvez démarer le container avec \verb|sail up -d|.
 
-        \hyperref[sec:utilisation]{Pour passer à la suite}
+        Ensuite, installez les librairies \js{} telle que \vite{} avec \verb|sail npm install|
+
+        Enfin, afin de pouvoir accéder à votre site avec l'URL fournie dans le \verb|.env|, il est nécessaire d'ajouter un \textit{localhost}.
+
+        \newpage
+        \subsubsection[Localhosts][fr.wikipedia.org/wiki/Localhost]{Localhosts\label{sec:localhost}}
+        La méthode diffère selon le système d'exploitation:
+        \begin{itemize}
+            \item Si vous êtes sous \windows{}, allez dans \verb|C:\Windows\System32\drivers\etc| et ouvrez le fichier \verb|hosts|\footnote{ATTENTION, vous devez ouvrir ce fichier avec les droits d'administrateur, sinon vous ne pourrez pas sauvegarder vos modifications.}. Dedans, ajoutez deux lignes comme ceci:
+            \begin{lstlisting}
+                127.0.0.1 example
+                ::1 example
+            \end{lstlisting}
+            \item Si vous êtes sous \linux{},
+            \item Si vous êtes sous \macos{},
+        \end{itemize}
+
+        Une fois cela fait, redémarez votre navigateur et allez sur l'URL que vous avez choisie, vous devriez voir la page d'acceuil de \laravel{}.
+
+        \hyperref[sec:ensuite]{Pour passer à la suite}
     
-    \subsection[Ajout d'un projet depuis GitHub]{Ajout d'un projet depuis \github{} \label{sec:project_git}}
+    \newpage
+    \subsection[Ajout d'un projet depuis GitHub]{Ajout d'un projet depuis \github{}\label{sec:project_git}}
 
-    Lorsque vous clonez un \texttt{repo} sur votre machine, le site manque des composants essentiels à son fonctionnements: ses packages. Pour installer ces packages, il est nécessaire d'effectuer la commande \verb|composer install|, sauf que vous n'avez pas \texttt{composer} d'installer. En revanche, \texttt{composer} est utilisable grâce à  \laravelsail{} par \verb|sail composer install|!
+    Lorsque vous clonez un \texttt{repo} sur votre machine, le site manque des composants essentiels à son fonctionnements: ses packages. Pour installer ces packages, il est nécessaire d'effectuer la commande \verb|composer install|, sauf que vous n'avez pas \texttt{composer} d'installé. En revanche, \texttt{composer} est utilisable grâce à  \laravelsail{} par \verb|sail composer install|!
 
     Le petit hick, c'est que \laravelsail{} est un package\ldots à installer avec \verb|composer install|\footnote{Le serpent qui se mort la queue, l'oeuf ou la poule, appellez ce paradoxe comme vous le voulez.}. 
 
@@ -97,6 +115,8 @@
     \end{lstlisting}
 
     de cette manière, les packages de \texttt{composer} seront installés. Plus de renseignements sur la \href{https://laravel.com/docs/10.x/sail#installing-composer-dependencies-for-existing-projects}{Doc \laravel}.
+    
+    Avec les packages (et donc \laravelsail{}) d'installés, vous pouvez démarer le container avec \verb|sail up -d|.
 
     En ce qui concerne les librairies \js{}, vous pouvez executer 
     \begin{lstlisting}
@@ -109,7 +129,7 @@
 
     \begin{itemize}
         \item \verb|APP_NAME|: changer le nom de votre application.
-        \item \verb|APP_URL|: changez l'url pour accéder à votre site. Attention, cette url doit être conforme à celle écrite dans le fichier \verb|hosts| de la \textsc{section~WIP}
+        \item \verb|APP_URL|: changez l'url pour accéder à votre site. Attention, cette url doit être conforme à celle écrite dans le fichier \verb|hosts| de la \textsc{section~\ref{sec:localhost}}
         \item \verb|DB_DATABASE|: changer le nom de votre \db{} comme bon vous semble.
         \item \verb|DB_HOST|: à changer en \verb|mysql|.
     \end{itemize}
@@ -120,7 +140,15 @@
         sail artisan key: generate
     \end{lstlisting}
 
-    et qu'à ajouter neuro dans la liste de vos \texttt{localhosts} comme décrit dans la \textsc{section~\ref{}} WIP
+    et qu'à ajouter l'URL de votre site dans la liste de vos \texttt{localhosts} comme décrit dans la \textsc{section~\ref{sec:localhost}}.
 
+    \subsubsection[Dernières étapes]{Dernières étapes}
+    Enfin, les dernière étapes consistent à taper ces deux commandes, que nous expliquerons dans la formation suivante:
+    \begin{enumerate}
+        \item \verb|sail artisan migrate:fresh --seed| pour lancer la base de donnée.
+        \item \verb|sail npm run dev| pour compiler \css{} et \js{}.
+    \end{enumerate}
 
-    \hyperref[sec:utilisation]{Pour passer à la suite}
+    Une fois cela fait, redémarez votre navigateur et allez sur l'URL que vous avez choisie, vous devriez voir la page d'acceuil de \laravel{}.
+
+    \hyperref[sec:ensuite]{Pour passer à la suite}
