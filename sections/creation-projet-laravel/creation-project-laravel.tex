@@ -50,16 +50,34 @@
 
         \begin{lstlisting}
             phpmyadmin:
-                image: 'phpmyadmin:latest' 
+                image: 'phpmyadmin/phpmyadmin'
                 ports:
-                    - '8080:80' 
+                    - '8080:80'
                 networks:
-                    - sail 
+                    - sail
                 environment:
                     - PMA_ARBITRARY=1
+                    - PMA_HOST=mysql
+                    - PMA_PORT=3306
+                depends_on:
+                    - mysql
         \end{lstlisting}
 
         Une fois cela fait, \phpmyadmin{} est intégré au projet.
+
+        \subsubsection{Setup}
+        Il y'a plusieurs choses à faire avant de pouvoir accéder à votre site. Premièrement, installez les librairies \js{} telle que \vite{} avec \verb|sail npm install|.
+
+        Ensuite, il faut configurer le fichier \verb|.env|:
+        \begin{itemize}
+            \item \verb|APP_NAME|: changer le nom de votre application.
+            \item \verb|APP_URL|: changer l'URL pour accéder à votre site, attention, cette url doit être conforme à celle écrite dans le fichier hosts de la section suivante.
+            \item \verb|DB_DATABASE|: changez le nom de votre \db{} comme bon vous semble.
+        \end{itemize}
+        Les autres champs peuvent à priori rester inchangés.
+        
+
+
         \hyperref[sec:utilisation]{Pour passer à la suite}
     
     \subsection[Ajout d'un projet depuis GitHub]{Ajout d'un projet depuis \github{} \label{sec:project_git}}
@@ -80,12 +98,11 @@
 
     de cette manière, les packages de \texttt{composer} seront installés. Plus de renseignements sur la \href{https://laravel.com/docs/10.x/sail#installing-composer-dependencies-for-existing-projects}{Doc \laravel}.
 
-    % A METTRE DANS LA SECTION D APRES EN FAIT
     En ce qui concerne les librairies \js{}, vous pouvez executer 
     \begin{lstlisting}
         sail npm install
     \end{lstlisting}
-    pour installer \vite.
+    pour installer, entres autres, \vite.
 
     \subsubsection[Setup]{Setup}
     Enfin, il faut setup les paramètres du site en créant un fichier \verb|.env|\footnote{ps: vous pouvez copier et renommer le fichier \verb|.env example|, mais ne supprimez pas l'original!}. Vous pouvez modifier:
@@ -93,7 +110,8 @@
     \begin{itemize}
         \item \verb|APP_NAME|: changer le nom de votre application.
         \item \verb|APP_URL|: changez l'url pour accéder à votre site. Attention, cette url doit être conforme à celle écrite dans le fichier \verb|hosts| de la \textsc{section~WIP}
-        \item \verb|DATABASE_NAME|: changer le nom de votre \db{} comme bon vous semble.
+        \item \verb|DB_DATABASE|: changer le nom de votre \db{} comme bon vous semble.
+        \item \verb|DB_HOST|: à changer en \verb|mysql|.
     \end{itemize}
     A priori, les autres champs doivent rester inchangés.
 
@@ -101,5 +119,8 @@
     \begin{lstlisting}
         sail artisan key: generate
     \end{lstlisting}
+
+    et qu'à ajouter neuro dans la liste de vos \texttt{localhosts} comme décrit dans la \textsc{section~\ref{}} WIP
+
 
     \hyperref[sec:utilisation]{Pour passer à la suite}
