@@ -84,18 +84,18 @@
         \subsubsection[Localhosts][fr.wikipedia.org/wiki/Localhost]{Localhosts\label{sec:localhost}}
         La méthode diffère selon le système d'exploitation:
         \begin{itemize}
-            \item Si vous êtes sous \windows{}, allez dans \verb|C:\Windows\System32\drivers\etc| et ouvrez le fichier \verb|hosts|\footnote{ATTENTION, vous devez ouvrir ce fichier avec les droits d'administrateur, sinon vous ne pourrez pas sauvegarder vos modifications.}. Dedans, ajoutez deux lignes comme ceci:
+            \item Si vous êtes sous \windows{}, allez dans \verb|C:\Windows\System32\drivers\etc\| et ouvrez le fichier \verb|hosts|\footnote{ATTENTION, vous devez ouvrir ce fichier avec les droits d'administrateur, sinon vous ne pourrez pas sauvegarder vos modifications.}. Dedans, ajoutez deux lignes comme ceci:
             \begin{lstlisting}
                 127.0.0.1 example
                 ::1 example
             \end{lstlisting}
-            \item Si vous êtes sous \linux{},
-            \item Si vous êtes sous \macos{},
+            \item Si vous êtes sous \linux{}, pareil mais le fichier se trouve dans \verb|/etc/|.
+            \item Si vous êtes sous \macos{}, pareil mais le fichier se trouve dans \verb|/private/etc/|.
         \end{itemize}
 
         Une fois cela fait, redémarez votre navigateur et allez sur l'URL que vous avez choisie, vous devriez voir la page d'acceuil de \laravel{}.
 
-        \hyperref[sec:ensuite]{Pour passer à la suite}
+        \hyperref[sec:suite]{Pour passer à la suite}
     
     \newpage
     \subsection[Ajout d'un projet depuis GitHub]{Ajout d'un projet depuis \github{}\label{sec:project_git}}
@@ -151,4 +151,4 @@
 
     Une fois cela fait, redémarez votre navigateur et allez sur l'URL que vous avez choisie, vous devriez voir la page d'acceuil de \laravel{}.
 
-    \hyperref[sec:ensuite]{Pour passer à la suite}
+    \hyperref[sec:suite]{Pour passer à la suite}
