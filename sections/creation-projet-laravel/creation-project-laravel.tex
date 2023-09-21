@@ -15,13 +15,13 @@
 
         Avec cette commande votre projet sera installé avec plusieurs services de base (mysql, redis, et d'autres). PS:la création peut prendre du temps (5\-10 minutes).
 
-        il est possible de choisir les services à installer avec le mot clé \textit{with}. Dans le cadre de ce tutoriel, nous aurons besoin de 3 services: \mysql, mailpit et \phpmyadmin. Les 2 premiers peuvent être téléchargés avec laravel comme suit:
+        Il est possible de choisir les services à installer avec le mot clé \textit{with}. Dans le cadre de ce tutoriel, nous aurons besoin de 3 services: \mysql, mailpit et \phpmyadmin. Les 2 premiers peuvent être téléchargés avec laravel comme suit:
 
         \begin{lstlisting}
             curl -s "https://laravel.build/example-app?with=mysql,mailpit" | bash
         \end{lstlisting}
 
-        une fois la commande lancée le projet va se créer (cela peut prendre un certain temps)
+        Une fois la commande lancée, le projet va se créer (cela peut prendre un certain temps)
 
         \begin{figure}[h]
             \centering
@@ -33,12 +33,12 @@
             \end{subfigure}
         \end{figure}
 
-        Une fois le dossier du projet créé vous allez rentrer dans le dossier (\textit{File} et ensuite \textit{Open Folder\ldots}) et ouvrir le fichier \verb|docker-compose.yml|.
+        Une fois le dossier du projet créé, entrez dans le dossier du site (\textit{File} $\rightarrow$ \textit{Open Folder\ldots}) et ouvrir le fichier \verb|docker-compose.yml|.
 
         Ce fichier représente la configuration générale de votre conteneur, c'est ici que l'on va définir les services à installer, les versions, les images, ect.
         Ce fichier est très important, sans lui, pas de conteneur.
 
-        Vous pouvez voir qu'il est composé de plusieurs \href{https://docs.docker.com/compose/compose-file/}{sections}, \textit{Version, services, network, volumes}. Chaque section à son utilitée. Nous allons nous concentrer sur la section \verb|service| du fichier. Plus précisement, nous allons ajouter un service.\\ 
+        Vous pouvez voir qu'il est composé de plusieurs \href{https://docs.docker.com/compose/compose-file/}{sections}, \textit{Version, services, network, volumes}. Chaque section à son utilité. Nous allons nous concentrer sur la section \verb|service| du fichier. Plus précisement, nous allons en ajouter un.
 
 
     \subsubsection[Ajout PhpMyAdmin]{Ajout \phpmyadmin{}}
@@ -64,7 +64,7 @@
 
         Une fois cela fait, \phpmyadmin{} est intégré au projet.
 
-        \subsubsection{Setup}
+        \subsubsection[Setup]{Setup}
         Il y'a plusieurs choses à faire avant de pouvoir accéder à votre site. Premièrement, configurer le fichier \verb|.env|:
 
         \begin{itemize}
@@ -100,11 +100,11 @@
     \newpage
     \subsection[Ajout d'un projet depuis GitHub]{Ajout d'un projet depuis \github{}\label{sec:project_git}}
 
-    Lorsque vous clonez un \texttt{repo} sur votre machine, le site manque des composants essentiels à son fonctionnements: ses packages. Pour installer ces packages, il est nécessaire d'effectuer la commande \verb|composer install|, sauf que vous n'avez pas \texttt{composer} d'installé. En revanche, \texttt{composer} est utilisable grâce à  \laravelsail{} par \verb|sail composer install|!
+    Lorsque vous clonez un \texttt{repo} sur votre machine, le site manque des composants essentiels à son fonctionnement: ses packages. Pour installer ces packages, il est nécessaire d'effectuer la commande \verb|composer install|, sauf que vous n'avez pas \texttt{\href{https://getcomposer.org/doc/00-intro.md}{composer}} d'installé. En revanche, \texttt{composer} est utilisable grâce à  \laravelsail{} par \verb|sail composer install|!
 
-    Le petit hick, c'est que \laravelsail{} est un package\ldots à installer avec \verb|composer install|\footnote{Le serpent qui se mort la queue, l'oeuf ou la poule, appellez ce paradoxe comme vous le voulez.}. 
+    Le petit hic, c'est que \laravelsail{} est un package\ldots à installer avec \verb|composer install|\footnote{Le serpent qui se mort la queue, l'oeuf ou la poule, appellez ce paradoxe comme vous le voulez.}. 
 
-    Heureusement, \laravel{} a la sollution pour nous. Il suffit de se rendre dans le dossier de votre projet fraichement installé et de taper:
+    Heureusement, \laravel{} a la solution pour nous. Il suffit de se rendre dans le dossier de votre projet fraichement installé et de taper:
     \begin{lstlisting}
         docker run --rm \
             -u "$(id -u):$(id -g)" \
@@ -113,6 +113,8 @@
             laravelsail/php82-composer:latest \
             composer install --ignore-platform-reqs
     \end{lstlisting}
+
+    Cette commande horrible permet \textit{en gros} de lancer un container temporaire dans lequel \texttt{composer} est installé, et de l'utiliser afin de lancer la commande que l'on souhaite\footnote{Remarquez que par conséquent, n'importe quelle commande \php{} peut également être exécutée en remplaçant \verb|composer install --ignore-platform-reqs| par la commande de votre choix}.
 
     de cette manière, les packages de \texttt{composer} seront installés. Plus de renseignements sur la \href{https://laravel.com/docs/10.x/sail#installing-composer-dependencies-for-existing-projects}{Doc \laravel}.
     
