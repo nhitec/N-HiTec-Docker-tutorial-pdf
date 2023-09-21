@@ -13,7 +13,7 @@
             curl -s https://laravel.build/example-app | bash
         \end{lstlisting}
 
-        Avec cette commande votre projet sera installé avec plusieurs services de base (mysql, redis, et d'autres). PS:la création peut prendre du temps (5\-10 minutes).
+        Avec cette commande votre projet sera installé avec plusieurs services de base (mysql, redis, et d'autres). PS:la création peut prendre du temps (entre 5 et 10 minutes).
 
         Il est possible de choisir les services à installer avec le mot clé \textit{with}. Dans le cadre de ce tutoriel, nous aurons besoin de 3 services: \mysql, mailpit et \phpmyadmin. Les 2 premiers peuvent être téléchargés avec laravel comme suit:
 
@@ -33,7 +33,7 @@
             \end{subfigure}
         \end{figure}
 
-        Une fois le dossier du projet créé, entrez dans le dossier du site (\textit{File} $\rightarrow$ \textit{Open Folder\ldots}) et ouvrir le fichier \verb|docker-compose.yml|.
+        Une fois le dossier du projet créé, entrez dans le dossier du site (\textit{File} $\rightarrow$ \textit{Open Folder\ldots}) et ouvrez le fichier \verb|docker-compose.yml|.
 
         Ce fichier représente la configuration générale de votre conteneur, c'est ici que l'on va définir les services à installer, les versions, les images, ect.
         Ce fichier est très important, sans lui, pas de conteneur.
