@@ -1,4 +1,6 @@
 \section[Utilisation]{Utilisation\label{sec:utilisation}}
+
+\subsection[Commandes]{commandes}
 Avant de créer votre premier projet, nous allons voir les commandes de base pour utiliser \laravelsail{}.
 
 Pour utiliser le script, il vous faudra utiliser la commande suivante dans le dossier du projet (que vous créerez à la section suivante):
@@ -7,7 +9,7 @@ Pour utiliser le script, il vous faudra utiliser la commande suivante dans le do
     ./vendor/bin/sail [command] [options] [arguments]
 \end{lstlisting}
 
-Vous pouvez créer un alias pour sail en ajoutant la ligne suivante à votre \verb|.bashrc|, \verb|.zshrc|, ect: 
+Comme taper \verb|./vendor/bin/sail| devant chaque commande est fort fastidieux, vous pouvez créer un alias pour sail en ajoutant la ligne suivante tout en bas de votre fichier \verb|.bashrc| (pour \windows{} (dans WSL2)) ou \verb|.zshrc| pour \macos{}. Ces fichiers devraient se trouver dans les dossiers sources (\verb|~|)
 
 \begin{lstlisting}
     alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
@@ -16,7 +18,7 @@ Vous pouvez créer un alias pour sail en ajoutant la ligne suivante à votre \ve
 Ce qui vous permettra de ne plus devoir taper \verb|./vendor/bin/sail| à chaque commande mais simplement \verb|sail|.
 
 \subsection[Démarrage du container]{Démarrage du container}
-    Pour lancer le container et ainsi pouvoir travailler sur le projet, entrez dans le dossier de votre projet via un terminal et lancer la commande:
+    Pour lancer le container et ainsi pouvoir travailler sur le projet, entrez dans le dossier de votre projet via un terminal et lancer la commande\footnote{Si un container est déjà lancé, vous aurez une erreur! Avec seulement \laravelsail, on ne peut lancer qu'un container à la fois.}:
     
     \begin{lstlisting}
         sail up -d
@@ -24,11 +26,17 @@ Ce qui vous permettra de ne plus devoir taper \verb|./vendor/bin/sail| à chaque
 
     Cette commande lancera le container en mode détaché pour garder l'accès au terminal (pratique puisque vous devrez exécuter de nombreuses commandes, même une fois le container démaré)\footnote{On peut aussi lancer dans un terminal avec \textit{sail up}}
 
-    C'est une fois cette commande faite que vous pourrez accéder à votre site en allant sur \url{http://localhost/} ou votre URL personnalisée.
+    C'est une fois cette commande faite (et les autres configurations effectuées) que vous pourrez accéder à votre site en allant sur \url{http://localhost/} ou votre URL personnalisée.
 
 \subsection{Arrêt du container}
 
-Pour éteintre le container lorsque vous avez finis de travailler, tapez la commande
+Pour éteintre le container lorsque vous avez finis de travailler (mais le laisser déployé dans \dockerdesktop), tapez la commande
+
+\begin{lstlisting}
+    sail stop
+\end{lstlisting}
+
+Enfin, pour éteindre le container et le supprimer, tapez
 
 \begin{lstlisting}
     sail down
