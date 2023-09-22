@@ -76,7 +76,9 @@
 
         Une fois cela fait, vous pouvez démarer le container avec \verb|sail up -d|.
 
-        Ensuite, installez les librairies \js{} telle que \vite{} avec \verb|sail npm install|
+        Ensuite, installez les librairies \js{} telle que \vite{} avec \verb|sail npm install|.
+
+        La dernière chose à faire est une modification \href{https://laravel.com/docs/10.x/vite#configuring-hmr-in-sail-on-wsl2}{propre à WSL2}. Ajoutez donc les lignes de code renseignées au fichier \verb|vite.config.js|.
 
         Enfin, afin de pouvoir accéder à votre site avec l'URL fournie dans le \verb|.env|, il est nécessaire d'ajouter un \textit{localhost}.
 
