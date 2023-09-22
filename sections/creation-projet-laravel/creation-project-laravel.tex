@@ -68,13 +68,13 @@
         Il y'a plusieurs choses à faire avant de pouvoir accéder à votre site. Premièrement, configurer le fichier \verb|.env|:
 
         \begin{itemize}
-            \item \verb|APP_NAME|: changer le nom de votre application.
-            \item \verb|APP_URL|: changer l'URL pour accéder à votre site, attention, cette url doit être conforme à celle écrite dans le fichier \verb|hosts| de la section suivante. Par example, \verb|http://example|.
+            \item \verb|APP_NAME|: changez le nom de votre application.
+            \item \verb|APP_URL|: changez l'URL pour accéder à votre site, attention, cette url doit être conforme à celle écrite dans le fichier \verb|hosts| de la section suivante. Par example, \verb|http://example|.
             \item \verb|DB_DATABASE|: changez le nom de votre \db{} comme bon vous semble.
         \end{itemize}
         Les autres champs peuvent à priori rester inchangés.
 
-        Une fois cela fait, vous pouvez démarer le container avec \verb|sail up -d|.
+        Une fois cela fait, vous pouvez démarrer le container avec \verb|sail up -d|.
 
         Ensuite, installez les librairies \js{} telle que \vite{} avec \verb|sail npm install|.
 
@@ -102,7 +102,7 @@
     \newpage
     \subsection[Ajout d'un projet depuis GitHub]{Ajout d'un projet depuis \github{}\label{sec:project_git}}
 
-    Lorsque vous clonez un \texttt{repo} sur votre machine, le site manque des composants essentiels à son fonctionnement: ses packages. Pour installer ces packages, il est nécessaire d'effectuer la commande \verb|composer install|, sauf que vous n'avez pas \texttt{\href{https://getcomposer.org/doc/00-intro.md}{composer}} d'installé. En revanche, \texttt{composer} est utilisable grâce à  \laravelsail{} par \verb|sail composer install|!
+    Lorsque vous clonez un \texttt{repo} sur votre machine, le site manque de composants essentiels à son fonctionnement: ses packages. Pour installer ces packages, il est nécessaire d'effectuer la commande \verb|composer install|, sauf que vous n'avez pas \texttt{\href{https://getcomposer.org/doc/00-intro.md}{composer}} d'installé. En revanche, \texttt{composer} est utilisable grâce à  \laravelsail{} par \verb|sail composer install|!
 
     Le petit hic, c'est que \laravelsail{} est un package\ldots à installer avec \verb|composer install|\footnote{Le serpent qui se mort la queue, l'oeuf ou la poule, appellez ce paradoxe comme vous le voulez.}. 
 
@@ -132,9 +132,9 @@
     Enfin, il faut setup les paramètres du site en créant un fichier \verb|.env|\footnote{ps: vous pouvez copier et renommer le fichier \verb|.env example|, mais ne supprimez pas l'original!}. Vous pouvez modifier:
 
     \begin{itemize}
-        \item \verb|APP_NAME|: changer le nom de votre application.
+        \item \verb|APP_NAME|: changez le nom de votre application.
         \item \verb|APP_URL|: changez l'url pour accéder à votre site. Attention, cette url doit être conforme à celle écrite dans le fichier \verb|hosts| de la \textsc{section~\ref{sec:localhost}}
-        \item \verb|DB_DATABASE|: changer le nom de votre \db{} comme bon vous semble.
+        \item \verb|DB_DATABASE|: changez le nom de votre \db{} comme bon vous semble.
         \item \verb|DB_HOST|: à changer en \verb|mysql|.
     \end{itemize}
     A priori, les autres champs doivent rester inchangés.
