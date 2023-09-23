@@ -69,7 +69,7 @@
 
         \begin{itemize}
             \item \verb|APP_NAME|: changez le nom de votre application.
-            \item \verb|APP_URL|: changez l'URL pour accéder à votre site, attention, cette url doit être conforme à celle écrite dans le fichier \verb|hosts| de la section suivante. Par example, \verb|http://example|.
+            \item \verb|APP_URL|: changez l'URL pour accéder à votre site, attention, cette url doit être conforme à celle écrite dans le fichier \verb|hosts| de la section suivante. Par example, \url{http://example}.
             \item \verb|DB_DATABASE|: changez le nom de votre \db{} comme bon vous semble.
         \end{itemize}
         Les autres champs peuvent à priori rester inchangés.
@@ -96,6 +96,8 @@
         \end{itemize}
 
         Une fois cela fait, redémarez votre navigateur et allez sur l'URL que vous avez choisie, vous devriez voir la page d'acceuil de \laravel{}.
+
+        Vous pouvez également vous connecter à l'interface de \phpmyadmin en vous rendant sur \url{http://example:8080}. Les identifiants demandés sont ceux correspondants aux champs \verb|DB_USERNAME| et \verb|DB_PASSWORD| renseignés dans le \verb|.env|\footnote{le champs \verb|DB_PASSWORD| peut rester vide.}.
 
         \hyperref[sec:suite]{Pour passer à la suite}
     
