@@ -1,25 +1,31 @@
 name: Publish
 
 on:
-  push:
-    tags:
-      - '*'
+    push:
+        tags:
+            - '*'
 
 jobs:
-  release:
-    name: Create new release
-    runs-on: ubuntu-latest
+    release:
+        name: Create new release
+        runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v3
-        
-    - name: Create Release
-      uses: svenstaro/upload-release-action@v2
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: N-HiTec-tutoriel-docker.pdf
-        asset_name: N-HiTec-tutoriel-docker-$tag.pdf
-        release_name: N-HiTec-tutoriel-docker-${{ github.ref_name }}"
-        tag: ${{ github.ref }}
-        overwrite: true
-        body: ${{steps.github_release.outputs.changelog}}
+        steps:
+            - uses: actions/checkout@v3
+
+            - name: Build Changelog
+              id: github_release
+              uses: mikepenz/release-changelog-builder-action@v4
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              
+            - name: Create Release
+              uses: svenstaro/upload-release-action@v2
+              with:
+                  repo_token: ${{ secrets.GITHUB_TOKEN }}
+                  file: N-HiTec-tutoriel-docker.pdf
+                  asset_name: N-HiTec-tutoriel-docker-$tag.pdf
+                  release_name: N-HiTec-tutoriel-docker-${{ github.ref_name }}"
+                  tag: ${{ github.ref }}
+                  overwrite: true
+                  body: ${{steps.github_release.outputs.changelog}}
