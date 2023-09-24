@@ -12,12 +12,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Build Changelog
+      id: github_release
+      uses: mikepenz/release-changelog-builder-action@v3
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: N-HiTec-tutoriel-docker.pdf
         asset_name: N-HiTec-tutoriel-docker-$tag.pdf
+        release_name: N-HiTec-tutoriel-docker-$tag
         tag: ${{ github.ref }}
         overwrite: true
-        body: "New release."
+        body: ${{steps.github_release.outputs.changelog}}
