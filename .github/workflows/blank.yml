@@ -17,12 +17,7 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: N-HiTec-tutoriel-docker.pdf
-        asset_name: N-HiTec-tutoriel-docker-$tag
+        asset_name: N-HiTec-tutoriel-docker-$tag.pdf
         tag: ${{ github.ref }}
         overwrite: true
         body: "New release."
-    - name: Add pdf to the release
-      uses: AButler/upload-release-assets@v2.0
-      with:
-        files: 'N-HiTec-tutoriel-docker.pdf'
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
