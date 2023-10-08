@@ -25,7 +25,7 @@ jobs:
                   repo_token: ${{ secrets.GITHUB_TOKEN }}
                   file: N-HiTec-tutoriel-docker.pdf
                   asset_name: N-HiTec-tutoriel-docker-$tag.pdf
-                  release_name: N-HiTec-tutoriel-docker-${{ github.ref_name }}"
+                  release_name: N-HiTec-tutoriel-docker-${{ github.ref_name }}
                   tag: ${{ github.ref }}
                   overwrite: true
                   body: ${{steps.github_release.outputs.changelog}}
