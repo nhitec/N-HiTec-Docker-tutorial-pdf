@@ -34,34 +34,27 @@ Choisissez la section correspondant à votre système d'exploitation:
         \item[2.] Installez les dépendances de \docker{}:
 
             \begin{lstlisting}
-                sudo apt-get install \
-                    ca-certificates \
-                    curl \
-                    gnupg \
-                    lsb-release
+                sudo apt-get install ca-certificates curl gnupg
             \end{lstlisting}
 
         \item[3.] Ajoutez la clé GPG officielle de \docker{}:
 
             \begin{lstlisting}
-                sudo mkdir -m 0755 -p /etc/apt/keyrings
+                sudo install -m 0755 -d /etc/apt/keyrings
 
-                curl -fsSL https://download.docker.com/linux/ubuntu/gpg | 
-                sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+                curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+                sudo chmod a+r /etc/apt/keyrings/docker.gpg
             \end{lstlisting}
 
         \item[4.] Configurez le répertoire:\\
 
-            \begin{footnotesize}
-                \textit{\textdollar(lsb\_release -cs)} doit dans quelques cas être remplacé par votre version de distribution \linux{}.\\
-                Dans l'installation de référence on a remplacé par \textit{jammy}.
-            \end{footnotesize}
             \begin{lstlisting}
                 echo \
-                "deb [arch=\$(dpkg --print-architecture) 
-                signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-                \$(lsb_release -cs) stable" 
-                | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+                "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] |
+                 https://download.docker.com/linux/ubuntu \
+                "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+                sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
             \end{lstlisting}
 
         \item[5.] Verifiez que le répertoire est bien configuré:
@@ -73,8 +66,8 @@ Choisissez la section correspondant à votre système d'exploitation:
         \item[6.] Installez Docker Engine, containerd, et Docker Compose:
 
             \begin{lstlisting}
-                sudo apt-get install docker-ce docker-ce-cli 
-                containerd.io docker-buildx-plugin docker-compose-plugin
+                sudo apt-get install docker-ce docker-ce-cli containerd.io | 
+                docker-buildx-plugin docker-compose-plugin
             \end{lstlisting}
             \begin{footnotesize}
                 Vous pouvez tester votre installation avec la commande: \textit{sudo docker run hello-world}
@@ -91,6 +84,10 @@ Choisissez la section correspondant à votre système d'exploitation:
             \begin{lstlisting}
                 sudo apt-get install ./docker-desktop-<version>-<arch>.deb
             \end{lstlisting}
+
+            \begin{footnotesize}
+                Attention à remplacer <version> <arch> par ceux de l'archive téléchargée.
+            \end{footnotesize}
 
     \end{itemize}
 
