@@ -9,7 +9,7 @@
     \subsubsection[Création du dossier]{Création du dossier}
         Avant toute chose, créez un dossier \verb|www/| dans votre dossier source. Ensuite, rentrer dans ce dossier car c'est ici que vous ajouterez vos projets.
         
-        Pour créer un nouveau projet \laravel{} dans un dossier ``exemple-app'' il suffit juste d'entrer la ligne de commande (mais ne le faites pas):
+        Pour créer un nouveau projet \laravel{} dans un dossier ``example-app'' il suffit juste d'entrer la ligne de commande \textcolor{red}{\textbf{(mais ne le faites pas)}}:
 
         \begin{lstlisting}
             curl -s https://laravel.build/example-app | bash
@@ -98,7 +98,7 @@
 
         Une fois cela fait, redémarez votre navigateur et allez sur l'URL que vous avez choisie, vous devriez voir la page d'acceuil de \laravel{}.
 
-        Vous pouvez également vous connecter à l'interface de \phpmyadmin en vous rendant sur \url{http://example:8080}. Les identifiants demandés sont ceux correspondants aux champs \verb|DB_USERNAME| et \verb|DB_PASSWORD| renseignés dans le \verb|.env|\footnote{le champs \verb|DB_PASSWORD| peut rester vide.}.
+        Vous pouvez également vous connecter à l'interface de \phpmyadmin{} en vous rendant sur \url{http://example:8080}. Les identifiants demandés sont ceux correspondants aux champs \verb|DB_USERNAME| et \verb|DB_PASSWORD| renseignés dans le \verb|.env|\footnote{le champs \verb|DB_PASSWORD| peut rester vide.}.
 
         \hyperref[sec:suite]{Pour passer à la suite}
     
@@ -150,6 +150,8 @@
     et qu'à ajouter l'URL de votre site dans la liste de vos \texttt{localhosts} comme décrit dans la \textsc{section~\ref{sec:localhost}}.
 
     \subsubsection[Dernières étapes]{Dernières étapes}
+    Pour être sur que toutes les modifications apportées ont été prises en compte, tapez la commande \verb|sail down|, suivie de \verb|sail up -d|.
+    
     Enfin, les dernière étapes consistent à taper ces deux commandes, que nous expliquerons dans la formation suivante:
     \begin{enumerate}
         \item \verb|sail artisan migrate:fresh --seed| pour lancer la base de donnée.
